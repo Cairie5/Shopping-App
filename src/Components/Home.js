@@ -18,7 +18,7 @@ function Home () {
     return (
         <div>
             <Search />
-            <ProductList products={product}/>
+            <ProductList products={product} className="shop-content"/>
         </div>
     )
 }

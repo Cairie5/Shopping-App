@@ -7,7 +7,7 @@ function ProductList({products}) {
         return (
             <ProductDetail
             key={item.id}
-            name={item.title}
+            title={item.title}
             price={item.price}
             description={item.description}
             image={item.image}
@@ -16,10 +16,8 @@ function ProductList({products}) {
         )
     })
     return (
-        <div>
-            <ul>
-                {listOfProducts}
-            </ul>
+        <div className="row">
+            {listOfProducts}
         </div>
     )
 }
