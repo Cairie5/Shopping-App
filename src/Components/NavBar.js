@@ -13,46 +13,28 @@ const linkStyles = {
 
 function NavBar() {
   return (
-    
     <div>
-        <div>
-        <NavLink
-            to="/"
-            exact
-        >
-            <i class="bi bi-house-fill p-3 m-1">home</i>
-        </NavLink>
-        <NavLink
-            to="/Login"
-            exact
-            style={linkStyles}
-            activeStyle={{
-            background: "darkblue",
-            }}
-        >
-            Login
-        </NavLink>
-        <NavLink
-            to="/signup"
-            exact
-            style={linkStyles}
-            activeStyle={{
-            background: "darkblue",
-            }}
-        >
-            SignUp
-        </NavLink>
-        <NavLink
-            to="/cart"
-            exact
-            style={linkStyles}
-            activeStyle={{
-            background: "darkblue",
-            }}
-        >
-            Add to cart
-        </NavLink>
-        </div>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <div class=" navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#"><NavLink to="/"><i class="bi bi-house"></i></NavLink></a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#"><NavLink to="/Login"><i class="bi bi-person-circle"></i></NavLink></a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#"><NavLink to="/signup"><i class="bi bi-box-arrow-in-right"></i></NavLink></a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#"><NavLink to="/cart"><i class="bi bi-cart-fill"></i></NavLink></a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </nav>
     </div>
   );
 }
