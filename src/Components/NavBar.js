@@ -26,16 +26,6 @@ function NavBar() {
             Home
         </NavLink>
         <NavLink
-            to="/products"
-            exact
-            style={linkStyles}
-            activeStyle={{
-            background: "darkblue",
-            }}
-        >
-            Product
-        </NavLink>
-        <NavLink
             to="/Login"
             exact
             style={linkStyles}
