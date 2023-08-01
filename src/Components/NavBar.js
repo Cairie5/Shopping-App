@@ -13,17 +13,14 @@ const linkStyles = {
 
 function NavBar() {
   return (
+    
     <div>
         <div>
         <NavLink
             to="/"
             exact
-            style={linkStyles}
-            activeStyle={{
-            background: "darkblue",
-            }}
         >
-            Home
+            <i class="bi bi-house-fill p-3 m-1">home</i>
         </NavLink>
         <NavLink
             to="/Login"

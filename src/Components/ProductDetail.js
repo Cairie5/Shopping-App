@@ -3,13 +3,11 @@ import React from "react";
 function ProductDetail ({title, price, description, image, category}) {
     return (
         
-            <div class="card">
+            <div class="card col-2 m-1">
                 <img src= {image} class="card-img-top" alt="..."/>
                 <div class="card-body">
-                    <h5 class="card-title">{title}</h5>
-                    <p class="card-text">{description}</p>
+                    <p className="fw-bold">{title}</p>
                     <label type="number">{price}</label>
-                    <p>{category}</p>
                     <i class="bi bi-bag-plus"></i>
                 </div>
             </div>        
