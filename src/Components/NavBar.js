@@ -17,7 +17,7 @@ function NavBar() {
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Navbar</a>
-                <div class=" navbar-collapse" id="navbarNav">
+                <div class="navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#"><NavLink to="/"><i class="bi bi-house"></i></NavLink></a>
@@ -29,7 +29,7 @@ function NavBar() {
                     <a class="nav-link" href="#"><NavLink to="/signup"><i class="bi bi-box-arrow-in-right"></i></NavLink></a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#"><NavLink to="/cart"><i class="bi bi-cart-fill"></i></NavLink></a>
+                    <a class="nav-link" href="#"><NavLink to="/cart"><i class="bi bi-cart-fill position-absolute top-0 end-0 m-2 p-2 bi-2x"></i></NavLink></a>
                     </li>
                 </ul>
                 </div>
