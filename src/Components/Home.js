@@ -1,26 +1,58 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
+import SortBar from "./SortBar";
+import ProductList from "./ProductList";
 import Search from "./Search";
-import ProductList from "./ProductList"
 
+function Home() {
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedPrice, setSelectedPrice] = useState("");
 
-function Home () {
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+        const uniqueCategories = [...new Set(data.map((item) => item.category))];
+        setCategories(uniqueCategories);
+      });
+  }, []);
 
-    const[product, setProduct] = useState([])
-    
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
 
-    useEffect (() =>{
-        fetch('https://fakestoreapi.com/products')
-        .then((res) => res.json())
-        .then (product => setProduct(product))
-    }, []
-    )
+  const handlePriceChange = (price) => {
+    setSelectedPrice(price);
+  };
 
-    return (
-        <div>
-            <Search />
-            <ProductList products={product} className="shop-content"/>
-        </div>
-    )
+  const filteredProducts = products.filter((product) => {
+    if (selectedCategory && product.category !== selectedCategory) {
+      return false;
+    }
+    return true;
+  });
+
+  const sortedProducts = selectedPrice
+    ? filteredProducts.slice().sort((a, b) => {
+        return (
+          selectedPrice === "low" ? a.price - b.price : b.price - a.price
+        );
+      })
+    : filteredProducts;
+
+  return (
+    <div>
+      <Search />
+      <SortBar
+        categories={categories}
+        onCategoryChange={handleCategoryChange}
+        onPriceChange={handlePriceChange}
+      />
+      <ProductList products={sortedProducts} className="shop-content" />
+    </div>
+  );
 }
 
 export default Home;
