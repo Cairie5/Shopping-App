@@ -3,8 +3,6 @@ import {Route, Switch } from "react-router-dom";
 import NavBar from "./NavBar"
 import Home from "./Home"
 import Login from './Login';
-import ProductList from "./ProductList";
-import Search from "./Search";
 import Signup from './Signup';
 import Cart from './Cart';
 import ProductDetail from './ProductDetail';
@@ -21,14 +19,8 @@ function App() {
           <Route exact path="/signup">
             <Signup />
           </Route>
-          <Route exact path="/search">
-            <Search />
-          </Route>
           <Route exact path="/login">
             <Login />
-          </Route>
-          <Route exact path="/products">
-            <ProductList />
           </Route>
           <Route exact path="/products/:id">
             <ProductDetail />
