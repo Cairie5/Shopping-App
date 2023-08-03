@@ -1,22 +1,31 @@
 import React from "react";
 import ProductDetail from "./ProductDetail";
 
-function ProductList({products}) {
-    const listOfProducts = 
-    products.map((item) => {
+function ProductList({products, setItem, item}) {
+    function addToItem(e) {
+        const foundItem = products.find((item)=>{
+            return item.id === parseInt(e.target.id)
+        })
+        if(!item.includes(foundItem)){
+            setItem([...item, foundItem])
+        }
+    }
+
+
+
+    const listOfProducts = products.map((item) => {
+        // console.log(item)
         return (
             <ProductDetail
             key={item.id}
-            title={item.title}
-            price={item.price}
-            description={item.description}
-            image={item.image}
-            category={item.category} 
+            item={item}
+            addToItem={addToItem}
             />
+           
         )
     })
     return (
-        <div className="row">
+        <div  style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(249px, auto))", gap: "2rem" }}>
             {listOfProducts}
         </div>
     )

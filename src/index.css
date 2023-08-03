@@ -1,12 +1,39 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 
-.shop-content{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(249px, auto));
-  gap: 5rem;
+
+.cart{
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 390px;
+  min-height: 100vh;
+  padding: 20px;
+  background: white;
+  box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
+  transition: 0.7s;
 }
 
-.bi-cart-fill{
-  size: 50px;
+.cart.active{
+  right: 0;
+}
+
+.cart-box{
+  display: grid;
+  grid-template-columns: 32% 50% 18%;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cart-img{
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  padding: 10px;
+}
+
+.detail-box{
+  display: grid;
+  row-gap: 0.5rem;
 }
