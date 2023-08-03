@@ -1,15 +1,18 @@
 import React from "react";
 
-function ProductDetail ({title, price, description, image, category}) {
+function ProductDetail ({item,addToItem}) {
     return (
         
-            <div class="card col-2 m-1">
-                <img src= {image} class="card-img-top " alt="..."/>
-                <div class="card-body">
-                    <p className="fw-bold">{title}</p>
-                    <label type="number">${price}</label>
-                    <p class="fw-lighter">{description}</p>
-                    <i class="bi bi-bag-plus"></i>
+            <div key={item.id} className="card hoverable" >
+                <div style={{padding: "20px"}}>
+                <img src= {item.image} className="card-img-top " style={{ width: "240px"}}  alt="..."/>
+                </div>
+                <div className="card-body bg-body-secondary ">
+                    <p className="fw-bold">{item.title}</p>
+                    <label type="number">${item.price}</label>
+                    {/* <p className="fw-lighter">{item.description}</p> */}
+                    <br/>
+                    <i className="bi bi-bag-fill position-absolute bottom-0 end-0 m-2 " onClick={addToItem} id={item.id} style={{fontSize: "2rem", color: "green", cursor:"pointer" }} ></i>
                 </div>
             </div>        
         )
