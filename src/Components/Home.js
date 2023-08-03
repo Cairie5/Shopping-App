@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import SortBar from "./SortBar";
 import ProductList from "./ProductList";
 import Search from "./Search";
+import Cart from "./Cart";
+
 
 function Home() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedPrice, setSelectedPrice] = useState("");
+  const[item, setItem] = useState([])
+
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -44,13 +48,16 @@ function Home() {
 
   return (
     <div>
+      <i className="bi bi-cart-fill position-absolute top-0 end-0 m-4 " style={{fontSize: "2rem", color: "cornflowerblue", cursor:"pointer" }}   onClick={() => {const cart = document.querySelector(".cart");cart.classList.add("active");}}></i>
+      <h2>PRODUCTS</h2>
       <Search />
       <SortBar
         categories={categories}
         onCategoryChange={handleCategoryChange}
         onPriceChange={handlePriceChange}
       />
-      <ProductList products={sortedProducts} className="shop-content" />
+      <ProductList products={sortedProducts} className="shop-content" item={item} setItem={setItem}/>
+      <Cart item={item} setItem={setItem} />
     </div>
   );
 }
