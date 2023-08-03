@@ -51,11 +51,14 @@ function Home() {
       <i className="bi bi-cart-fill position-absolute top-0 end-0 m-4 " style={{fontSize: "2rem", color: "cornflowerblue", cursor:"pointer" }}   onClick={() => {const cart = document.querySelector(".cart");cart.classList.add("active");}}></i>
       <h2>PRODUCTS</h2>
       <Search />
+      <br/>
       <SortBar
         categories={categories}
         onCategoryChange={handleCategoryChange}
         onPriceChange={handlePriceChange}
       />
+      <br/>
+      <hr/>
       <ProductList products={sortedProducts} className="shop-content" item={item} setItem={setItem}/>
       <Cart item={item} setItem={setItem} />
     </div>
