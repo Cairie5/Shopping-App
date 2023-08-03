@@ -1,26 +1,88 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
+import SortBar from "./SortBar";
+import ProductList from "./ProductList";
 import Search from "./Search";
-import ProductList from "./ProductList"
+import Cart from "./Cart";
 
-function Home () {
+function Home() {
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedPrice, setSelectedPrice] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [item, setItem] = useState([]);
 
-    const[product, setProduct] = useState([])
-   
-    
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+        const uniqueCategories = [...new Set(data.map((item) => item.category))];
+        setCategories(uniqueCategories);
+      });
+  }, []);
 
-    useEffect (() =>{
-        fetch('https://fakestoreapi.com/products')
-        .then((res) => res.json())
-        .then (product => setProduct(product))
-    },[])
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
 
+  const handlePriceChange = (price) => {
+    setSelectedPrice(price);
+  };
 
-    return (
-        <div>
-            <Search product={product}/> 
-            <ProductList products={product} className="shop-content"/>
-        </div>
-    )
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  };
+
+  const handleSearchButtonClick = () => {
+    // Trigger the search when the button is clicked
+    handleSearch(searchTerm);
+  };
+
+  const filteredProducts = products.filter((product) => {
+    if (selectedCategory && product.category !== selectedCategory) {
+      return false;
+    }
+    if (searchTerm && !product.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+      return false;
+    }
+    return true;
+  });
+
+  const sortedProducts = selectedPrice
+    ? filteredProducts.slice().sort((a, b) => {
+        return selectedPrice === "low" ? a.price - b.price : b.price - a.price;
+      })
+    : filteredProducts;
+
+  return (
+    <div>
+      <i
+        className="bi bi-cart-fill position-absolute top-0 end-0 m-4 "
+        style={{ fontSize: "2rem", color: "cornflowerblue", cursor: "pointer" }}
+        onClick={() => {
+          const cart = document.querySelector(".cart");
+          cart.classList.add("active");
+        }}
+      ></i>
+      <h2>PRODUCTS</h2>
+      {/* Pass the handleSearch function to the Search component */}
+      <Search onSearch={handleSearch} />
+      <SortBar
+        categories={categories}
+        onCategoryChange={handleCategoryChange}
+        onPriceChange={handlePriceChange}
+      />
+      {sortedProducts.length === 0 ? (
+        <p>No results found.</p>
+      ) : (
+        <ProductList products={sortedProducts} className="shop-content" item={item} setItem={setItem} />
+      )}
+      <Cart item={item} setItem={setItem} />
+      {/* Add the search button */}
+      <button onClick={handleSearchButtonClick}>Search</button>
+    </div>
+  );
 }
 
 export default Home;
