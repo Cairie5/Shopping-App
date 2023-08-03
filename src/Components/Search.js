@@ -1,16 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-function Search () {
-    return (
-        <nav class="navbar bg-body-tertiary">
-            <div class="container-fluid">
-                <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+function Search() {
+  const [search, setSearch] = useState("");
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, []);
+
+  return (
+    <div className="row">
+      <div>
+        <input
+          type="search"
+          name="search"
+          placeholder="Search items here"
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+        />
+      </div>
+      {data.filter((row) =>{
+          if (search === "") {
+            return row;
+          } else if (
+            row.title.toLowerCase().includes(search.toLowerCase())
+          ) {
+            return row;
+          }
+        })
+        .map((row, i) => {
+          return (
+            <div className="card" key={i}>
+              <div className="image">
+                <img src={row.image} alt={row.image} />
+              </div>
+              <div className="title">
+                <h2>{row.title.substring(0, 20)}</h2>
+                <p>{row.price}</p>
+              </div>
             </div>
-        </nav>
-    )
+          );
+        })}
+    </div>
+  );
 }
 
 export default Search;

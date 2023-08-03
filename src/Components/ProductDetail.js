@@ -1,6 +1,8 @@
 import React from "react";
 
 function ProductDetail ({title, price, description, image, category}) {
+
+    
     return (
         
             <div class="card col-2 m-1">
