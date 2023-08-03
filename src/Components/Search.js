@@ -23,7 +23,7 @@ function Search() {
             }}
             />
         </div>
-        <div class="row">
+        <div class="card-group">
         {data.filter((row) =>{
             if (search === "") {
                 return row;
@@ -36,14 +36,13 @@ function Search() {
             .map((row, i) => {
             return (
                 <div >
-                    <div class="card col-2 m-1" key={i}>
-                        <img src= {row.image} class="card-img-top" alt="..."/>
-                        <div class="card-body">
-                            <p className="fw-bold">{row.title}</p>
-                            <label type="number">{row.price}</label>
-                            <i class="bi bi-bag-plus"></i>
+                    <div class="card" key={i}>
+                        <img class="card-img-top" src={row.image} alt={row.image} />
                         </div>
-                    </div>   
+                        <div class="card-body">
+                            <h5 class="card-title">{row.title.substring(0, 20)}</h5>
+                            <p class="card-text">{row.price}</p>
+                    </div>
                 </div>
             );
             })}
