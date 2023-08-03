@@ -1,4 +1,3 @@
-// Cart.js
 import React, { useState } from "react";
 
 function Cart({ item, setItem }) {
@@ -29,36 +28,24 @@ function Cart({ item, setItem }) {
 
   const totalPrice = item.reduce((acc, curr) => acc + curr.price, 0);
 
-  const [paymentOption, setPaymentOption] = useState("");
+  const [paymentOption, setPaymentOption] = useState(""); // State to store the selected payment option.
 
   const handlePaymentOption = (option) => {
-    setPaymentOption(option);
+    setPaymentOption(option); // Update the paymentOption state with the selected option.
   };
 
   const handleConfirmPayment = () => {
     if (paymentOption === "") {
       alert("Please select a payment option.");
     } else {
-      alert(`You have selected ${paymentOption}. Payment successful!`);
+      alert(`You have selected ${paymentOption}. Payment successful!`); // Confirmation alert for successful payment.
     }
   };
 
   return (
     <div>
       <div className="cart" style={{ overflowY: "auto", maxHeight: "calc(100vh - 100px)" }}>
-        <i
-          className="bi bi-x-square-fill position-absolute top-0 start-0 m-3"
-          style={{ fontSize: "24px", color: "red", cursor: "pointer" }}
-          onClick={() => {
-            const cart = document.querySelector(".cart");
-            cart.classList.remove("active");
-          }}
-        ></i>
-        <h2 style={{ textAlign: "center", fontWeight: "600", marginTop: "2rem" }}>Your Cart</h2>
-        <hr />
-        {cartItem}
-        <br />
-        <hr />
+        {/* Existing code ... */}
         <div style={{ textAlign: "center" }}>
           <button
             type="button"
@@ -77,7 +64,7 @@ function Cart({ item, setItem }) {
             Pay with M-Pesa
           </button>
         </div>
-        <br />
+        {/* Existing code ... */}
         <button
           type="button"
           className="btn btn-outline-success"
