@@ -3,15 +3,22 @@ import SortBar from "./SortBar";
 import ProductList from "./ProductList";
 import Search from "./Search";
 import Cart from "./Cart";
-
+import firebase from "../firebase";
 
 function Home() {
+  const [user, setUser] = useState(null);
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedPrice, setSelectedPrice] = useState("");
-  const[item, setItem] = useState([])
+  const [item, setItem] = useState([]);
 
+  useEffect(() => {
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      setUser(user);
+    });
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -40,15 +47,15 @@ function Home() {
 
   const sortedProducts = selectedPrice
     ? filteredProducts.slice().sort((a, b) => {
-        return (
-          selectedPrice === "low" ? a.price - b.price : b.price - a.price
-        );
+        return selectedPrice === "low" ? a.price - b.price : b.price - a.price;
       })
     : filteredProducts;
 
   return (
     <div>
       <i className="bi bi-cart-fill position-absolute top-0 end-0 m-4 " style={{fontSize: "2rem", color: "cornflowerblue", cursor:"pointer" }}   onClick={() => {const cart = document.querySelector(".cart");cart.classList.add("active");}}></i>
+      
+      {user && <p>Welcome, {user.email}!</p>}
       <h2>PRODUCTS</h2>
       <Search />
       <SortBar
@@ -56,7 +63,7 @@ function Home() {
         onCategoryChange={handleCategoryChange}
         onPriceChange={handlePriceChange}
       />
-      <ProductList products={sortedProducts} className="shop-content" item={item} setItem={setItem}/>
+      <ProductList products={sortedProducts} className="shop-content" item={item} setItem={setItem} />
       <Cart item={item} setItem={setItem} />
     </div>
   );

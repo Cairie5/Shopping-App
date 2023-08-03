@@ -1,9 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import firebase from "../firebase";
 
-
-
-function NavBar() {
+function NavBar({ loggedIn }) {
+  const handleLogout = () => {
+    firebase.auth().signOut();
+  };
 
   return (
     <div>
@@ -15,7 +17,7 @@ function NavBar() {
           <div className="navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink to="/">
+                <NavLink to="/" exact>
                   <i
                     className="bi bi-house p-2"
                     style={{ fontSize: "2rem", color: "black" }}
@@ -23,13 +25,25 @@ function NavBar() {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/Login">
-                  <i
-                    className="bi bi-person-circle p-2"
-                    style={{ fontSize: "2rem", color: "black" }}
-                  ></i>
-                </NavLink>
+                {loggedIn ? (
+                  <>
+                    <NavLink to="/account">
+                      <button onClick={handleLogout} className="nav-link btn btn-link">
+                      Logout
+                    </button>
+                    </NavLink>
+                    
+                  </>
+                ) : (
+                  <NavLink to="/login">
+                    <i
+                      className="bi bi-person-circle p-2"
+                      style={{ fontSize: "2rem", color: "black" }}
+                    ></i>
+                  </NavLink>
+                )}
               </li>
+              
             </ul>
           </div>
         </div>
