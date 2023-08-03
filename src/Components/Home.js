@@ -12,14 +12,14 @@ function Home () {
     useEffect (() =>{
         fetch('https://fakestoreapi.com/products')
         .then((res) => res.json())
-        .then (product => {
-            setProduct(product)
+        .then (data => {
+            setProduct(data)
         })
-    }, []
-    )
+    }, []);
 
     return (
         <div>
+            <i className="bi bi-cart-fill position-absolute top-0 end-0 m-4 " style={{fontSize: "2rem", color: "cornflowerblue", cursor:"pointer" }}   onClick={() => {const cart = document.querySelector(".cart");cart.classList.add("active");}}></i>
             <h2>PRODUCTS</h2>
             <Search />
             <ProductList products={product} className="shop-content" item={item} setItem={setItem}/>
