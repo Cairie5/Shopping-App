@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SortBar from "./SortBar";
 import ProductList from "./ProductList";
-import Search from "./Search";
 import Cart from "./Cart";
 
 
@@ -47,21 +46,23 @@ function Home() {
     : filteredProducts;
 
   return (
-    <div>
-      <i className="bi bi-cart-fill position-absolute top-0 end-0 m-4 " style={{fontSize: "2rem", color: "cornflowerblue", cursor:"pointer" }}   onClick={() => {const cart = document.querySelector(".cart");cart.classList.add("active");}}></i>
-      <h2>PRODUCTS</h2>
-      <Search />
+    <>
+      <i className="bi bi-cart-fill position-absolute top-0 end-0 m-4 " style={{fontSize: "2rem", color: "cornflowerblue", cursor:"pointer",transform: 'translateY(-20px)' }}   onClick={() => {const cart = document.querySelector(".cart");cart.classList.add("active");}}></i>
+      <div className="main-home">
+        <h5 className="text-danger fs-3"> Discover our latest arrivals today!</h5>
+        <h1 className="fw-bold fs-1">Latest and Greatest Items of 2023 <br/> Shop now!</h1>
+        <p className="text-primary" >Shop with us and let your style speak for itself!</p>
+      </div>
       <br/>
       <SortBar
         categories={categories}
         onCategoryChange={handleCategoryChange}
         onPriceChange={handlePriceChange}
       />
-      <br/>
       <hr/>
       <ProductList products={sortedProducts} className="shop-content" item={item} setItem={setItem}/>
       <Cart item={item} setItem={setItem} />
-    </div>
+    </>
   );
 }
 

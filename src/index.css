@@ -37,3 +37,20 @@
   display: grid;
   row-gap: 0.5rem;
 }
+
+
+.bi:hover {
+  opacity: 50%;
+}
+
+.main-home{
+  padding: 5% 10%;
+  width: 100%;
+  height: 100vh;
+  background-image: url(./shoppingcart.webp);
+  background-position: center;
+  background-size: cover;
+  grid-template-columns: repeat(1, 1fr);
+  align-items: center;
+}
+
