@@ -27,7 +27,7 @@ function NavBar({ loggedIn }) {
               <li className="nav-item">
                 {loggedIn ? (
                   <>
-                    <NavLink to="/account">
+                    <NavLink to="/">
                       <button
                         onClick={handleLogout}
                         className="nav-link btn btn-link"
