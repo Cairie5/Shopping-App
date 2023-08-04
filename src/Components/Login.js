@@ -25,7 +25,7 @@ function Login() {
     <div className="profile"> 
       <h2>Login</h2>
       <div className="p-5 ">
-        <form className="rounded border border-primary-subtle p-4 bg-dark text-white">
+        <form className="form rounded border border-primary-subtle p-4 bg-dark text-white">
           <div className="mb-3">
           <label for="exampleInputEmail1" className="form-label">Email address</label>
             <input 

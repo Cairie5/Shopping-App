@@ -25,7 +25,7 @@ function Signup() {
     <div className="profile">
       <h2>Signup</h2>
       <div className="p-5">
-        <form className="bg-dark text-white rounded border border-primary-subtle p-4">
+        <form className="form bg-dark text-white rounded border border-primary-subtle p-4">
           <div className="mb-3">
           <label for="exampleInputEmail1" className="form-label">Email address</label>
             <input
