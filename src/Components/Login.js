@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory, Link } from "react-router-dom"; // Import useHistory and Link
+import { useHistory, Link } from "react-router-dom";
 import firebase from "../firebase";
 
 function Login() {
@@ -7,7 +7,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
-  const history = useHistory(); // Create a history object
+  const history = useHistory();
 
   const handleLogin = () => {
     firebase
@@ -22,13 +22,15 @@ function Login() {
   };
 
   return (
-    <div className="profile"> 
+    <div className="profile">
       <h2>Login</h2>
-      <div className="p-5 ">
+      <div className="p-5">
         <form className="form rounded border border-primary-subtle p-4 bg-dark text-white">
           <div className="mb-3">
-          <label for="exampleInputEmail1" className="form-label">Email address</label>
-            <input 
+            <label htmlFor="exampleInputEmail1" className="form-label">
+              Email address
+            </label>
+            <input
               type="email"
               className="form-control"
               id="exampleInputEmail1"
@@ -37,22 +39,32 @@ function Login() {
               aria-describedby="emailHelp"
               onChange={(e) => setEmail(e.target.value)}
             />
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <div id="emailHelp" className="form-text">
+              We'll never share your email with anyone else.
+            </div>
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">Password</label>
+            <label htmlFor="exampleInputPassword1" className="form-label">
+              Password
+            </label>
             <input
               type="password"
               placeholder="Password"
-              className="form-control" 
+              className="form-control"
               id="exampleInputPassword1"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit" className="btn btn-primary" onClick={handleLogin}>Login</button>
+          <button
+            type="button" // Use "button" instead of "submit" for manual handling
+            className="btn btn-primary"
+            onClick={handleLogin}
+          >
+            Login
+          </button>
           <p>
-            Don't have an account? <Link to="/signup">Signup</Link> {/* Add the Signup link */}
+            Don't have an account? <Link to="/signup">Signup</Link>
           </p>
           {error && <p>{error}</p>}
         </form>
