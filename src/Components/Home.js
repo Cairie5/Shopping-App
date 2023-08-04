@@ -71,13 +71,14 @@ function Home() {
           cart.classList.add("active");
         }}
       ></i>
+{user && <p>Welcome, {user.email}!</p>}
       <div className="main-home">
         <h5 className="text-danger fs-3"> Discover our latest arrivals today!</h5>
         <h1 className="fw-bold fs-1">Latest and Greatest Items of 2023 <br/> Shop now!</h1>
         <p className="text-primary" >Shop with us and let your style speak for itself!</p>
       </div>
       <hr />
-      {user && <p>Welcome, {user.email}!</p>}
+      
       <Search onSearch={handleSearch} />
       <SortBar
         categories={categories}
