@@ -24,7 +24,6 @@ function Search({ onSearch }) {
             onChange={handleInputChange}
             placeholder="Search products..."
           />
-          <button className="btn btn-outline-success" onClick={handleSearchButtonClick}>Search</button>
         </form>
       </div>
     </nav>
