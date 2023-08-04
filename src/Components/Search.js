@@ -9,9 +9,6 @@ function Search({ onSearch }) {
     onSearch(value); // Trigger live search on input change
   };
 
-  const handleSearchButtonClick = () => {
-    onSearch(searchTerm); // Trigger search when the button is clicked
-  };
 
   return (
     <nav className="navbar bg-body-tertiary">

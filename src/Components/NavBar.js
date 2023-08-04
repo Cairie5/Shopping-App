@@ -7,8 +7,8 @@ function NavBar() {
 
   return (
     <div>
-      <nav style={{display:"flex", padding:"10px 20px", transition: "all .42s ease" }}>
-        <div className="">
+      <nav  style={{display:"flex", padding:"10px 20px", transition: "all .42s ease" }}>
+        <div >
           <NavLink className="navbar-brand " to="/">
             <img src="/logo2.png" alt="logo" style={{width: "60px"}}/>
           </NavLink>

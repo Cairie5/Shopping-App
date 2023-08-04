@@ -3,6 +3,7 @@ import SortBar from "./SortBar";
 import ProductList from "./ProductList";
 import Search from "./Search";
 import Cart from "./Cart";
+import About from "./About";
 
 function Home() {
   const [products, setProducts] = useState([]);
@@ -34,10 +35,7 @@ function Home() {
     setSearchTerm(term);
   };
 
-  const handleSearchButtonClick = () => {
-    // Trigger the search when the button is clicked
-    handleSearch(searchTerm);
-  };
+  
 
   const filteredProducts = products.filter((product) => {
     if (selectedCategory && product.category !== selectedCategory) {
@@ -65,13 +63,15 @@ function Home() {
           cart.classList.add("active");
         }}
       ></i>
-      <div className="main-home">
-        <h5 className="text-danger fs-3"> Discover our latest arrivals today!</h5>
-        <h1 className="fw-bold fs-1">Latest and Greatest Items of 2023 <br/> Shop now!</h1>
-        <p className="text-primary" >Shop with us and let your style speak for itself!</p>
+      <div className="main-home position-relative">
+        <div className="position-absolute top-0 start-0 p-3 mt-5">
+          <h5 className="text-danger fs-3"> Discover our latest arrivals today!</h5>
+          <h1 className="fw-bold fs-1">Latest and Greatest <br/>Items of 2023 <br/> Shop now!</h1>
+          <p className="text-primary" >Shop with us and let your <br/> style speak for itself!</p>
+        </div>
       </div>
       <hr/>
-      <Search onSearch={handleSearch} />
+      <Search onSearch={handleSearch}  />
       <SortBar
         categories={categories}
         onCategoryChange={handleCategoryChange}
@@ -84,8 +84,9 @@ function Home() {
       )}
       <Cart item={item} setItem={setItem} />
       {/* Add the search button */}
-      <button onClick={handleSearchButtonClick}>Search</button>
       {/* Rest of the JSX code if any */}
+      <br/>
+      <About/>
     </>
   );
 }
