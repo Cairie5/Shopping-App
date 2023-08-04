@@ -1,29 +1,52 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import firebase from "../firebase";
 
-
-
-function NavBar() {
+function NavBar({ loggedIn }) {
+  const handleLogout = () => {
+    firebase.auth().signOut();
+  };
 
   return (
     <div>
-      <nav style={{display:"flex", padding:"10px 20px", transition: "all .42s ease" }}>
-        <div className="">
-          <NavLink className="navbar-brand " to="/">
-            <img src="/logo2.png" alt="logo" style={{width: "60px"}}/>
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <div className="container-fluid">
+          <NavLink className="navbar-brand" to="/">
+            <img src="/logo2.png" alt="logo" style={{ width: "60px" }} />
           </NavLink>
-          <NavLink to="/" style={{transform: 'translateX(-360px)'}}>
-            <i
-              className="bi bi-house p-3 mt-5"
-              style={{ fontSize: "2rem", color: "black"  }}
-            ></i>
-          </NavLink>          
-          <NavLink to="/Login" style={{transform: 'translateY(1px) translateX(-700px)'}}>
-            <i
-              className="bi bi-person-circle p-3"
-              style={{ fontSize: "2rem", color: "black" }}
-            ></i>
-          </NavLink>          
+          <div className="navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <NavLink to="/" exact>
+                  <i
+                    className="bi bi-house p-2"
+                    style={{ fontSize: "2rem", color: "black" }}
+                  ></i>
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                {loggedIn ? (
+                  <>
+                    <NavLink to="/account">
+                      <button
+                        onClick={handleLogout}
+                        className="nav-link btn btn-link"
+                      >
+                        Logout
+                      </button>
+                    </NavLink>
+                  </>
+                ) : (
+                  <NavLink to="/login">
+                    <i
+                      className="bi bi-person-circle p-2"
+                      style={{ fontSize: "2rem", color: "black" }}
+                    ></i>
+                  </NavLink>
+                )}
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </div>

@@ -3,14 +3,23 @@ import SortBar from "./SortBar";
 import ProductList from "./ProductList";
 import Search from "./Search";
 import Cart from "./Cart";
+import firebase from "../firebase";
 
 function Home() {
+  const [user, setUser] = useState(null);
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedPrice, setSelectedPrice] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [item, setItem] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      setUser(user);
+    });
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -43,9 +52,6 @@ function Home() {
     if (selectedCategory && product.category !== selectedCategory) {
       return false;
     }
-    if (searchTerm && !product.title.toLowerCase().includes(searchTerm.toLowerCase())) {
-      return false;
-    }
     return true;
   });
 
@@ -56,7 +62,7 @@ function Home() {
     : filteredProducts;
 
   return (
-    <>
+    <div>
       <i
         className="bi bi-cart-fill position-absolute top-0 end-0 m-4 "
         style={{ fontSize: "2rem", color: "cornflowerblue", cursor: "pointer" }}
@@ -65,12 +71,14 @@ function Home() {
           cart.classList.add("active");
         }}
       ></i>
+{user && <p>Welcome, {user.email}!</p>}
       <div className="main-home">
         <h5 className="text-danger fs-3"> Discover our latest arrivals today!</h5>
         <h1 className="fw-bold fs-1">Latest and Greatest Items of 2023 <br/> Shop now!</h1>
         <p className="text-primary" >Shop with us and let your style speak for itself!</p>
       </div>
-      <hr/>
+      <hr />
+      
       <Search onSearch={handleSearch} />
       <SortBar
         categories={categories}
@@ -86,7 +94,7 @@ function Home() {
       {/* Add the search button */}
       <button onClick={handleSearchButtonClick}>Search</button>
       {/* Rest of the JSX code if any */}
-    </>
+    </div>
   );
 }
 
