@@ -14,15 +14,20 @@ function Search({ onSearch }) {
   };
 
   return (
-    <div className="search-bar">
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={handleInputChange}
-        placeholder="Search products..."
-      />
-      <button onClick={handleSearchButtonClick}>Search</button>
-    </div>
+    <nav className="navbar bg-body-tertiary">
+      <div className="container-fluid">
+        <form className="d-flex" role="search">
+          <input
+          className="form-control me-2"
+            type="text"
+            value={searchTerm}
+            onChange={handleInputChange}
+            placeholder="Search products..."
+          />
+          <button className="btn btn-outline-success" onClick={handleSearchButtonClick}>Search</button>
+        </form>
+      </div>
+    </nav>
   );
 }
 
