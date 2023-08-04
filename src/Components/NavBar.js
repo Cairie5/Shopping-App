@@ -9,7 +9,7 @@ function NavBar({ loggedIn }) {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg bg-secondary bg-opacity-50">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
             <img src="/logo2.png" alt="logo" style={{ width: "60px" }} />
@@ -19,7 +19,7 @@ function NavBar({ loggedIn }) {
               <li className="nav-item">
                 <NavLink to="/" exact>
                   <i
-                    className="bi bi-house p-2"
+                    className="bi bi-house p-2 m-1"
                     style={{ fontSize: "2rem", color: "black" }}
                   ></i>
                 </NavLink>
@@ -39,7 +39,7 @@ function NavBar({ loggedIn }) {
                 ) : (
                   <NavLink to="/login">
                     <i
-                      className="bi bi-person-circle p-2"
+                      className="bi bi-person-circle p-2 m-2"
                       style={{ fontSize: "2rem", color: "black" }}
                     ></i>
                   </NavLink>
