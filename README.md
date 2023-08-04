@@ -28,7 +28,7 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 # Deployment
-This app has been deployed on https://shopping-app-sgw1.onrender.com/
+This app has been deployed on https://shopping-app-gv1o.onrender.com
 
 ### `npm run eject`
 
