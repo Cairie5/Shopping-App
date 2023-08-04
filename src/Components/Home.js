@@ -52,9 +52,6 @@ function Home() {
     if (selectedCategory && product.category !== selectedCategory) {
       return false;
     }
-    if (searchTerm && !product.title.toLowerCase().includes(searchTerm.toLowerCase())) {
-      return false;
-    }
     return true;
   });
 
@@ -80,6 +77,7 @@ function Home() {
         <p className="text-primary" >Shop with us and let your style speak for itself!</p>
       </div>
       <hr />
+      {user && <p>Welcome, {user.email}!</p>}
       <Search onSearch={handleSearch} />
       <SortBar
         categories={categories}
@@ -95,16 +93,6 @@ function Home() {
       {/* Add the search button */}
       <button onClick={handleSearchButtonClick}>Search</button>
       {/* Rest of the JSX code if any */}
-      {user && <p>Welcome, {user.email}!</p>}
-      <h2>PRODUCTS</h2>
-      <Search />
-      <SortBar
-        categories={categories}
-        onCategoryChange={handleCategoryChange}
-        onPriceChange={handlePriceChange}
-      />
-      <ProductList products={sortedProducts} className="shop-content" item={item} setItem={setItem} />
-      <Cart item={item} setItem={setItem} />
     </div>
   );
 }
