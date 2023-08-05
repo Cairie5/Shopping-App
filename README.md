@@ -40,27 +40,42 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### PROBLEM STATEMENT
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Residential Properties In Kenya and
+Around The World are looking for a
+means to purchase products online
+without being tricked by other business
+personel
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##SOLUTION
 
-### Code Splitting
+Create an online shop where costumes can buy goods at the comfort their
+Home with zero risks at line.Detect Gas Leakages,
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Development Process
 
-### Analyzing the Bundle Size
+The team with the help of an application of Vs code and other third party
+Applications were used in the development of the website until its
+completion.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+###TECHNOLOGIES USED
+Video code editor
+Google search
+Youtube
+Github
 
-### Making a Progressive Web App
+###CHALLENGES FACED
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Unknown Errors on Git and
+more on merging issues.
 
-### Advanced Configuration
+###FUTURE PLANS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Create better and reliable site where
+user can buy without the fear of losing
+their money to unscrupulous business
+personnel and also risks on cybercrime.
 
 ### Deployment
 
